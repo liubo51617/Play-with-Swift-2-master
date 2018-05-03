@@ -1,0 +1,44 @@
+## 公共稿库日志类使用说明
+
+#### 后台操作类日志类
+
+**使用方式：**本项目中，在需要使用日志类的地方调用方法：app('dolog')->add($userid,$username,$type,$content)
+
+参数说明：
+
+参数名|类型|是否必需|说明
+:--:|:--:|:--:|:--
+userid|int|是|登录后台的用户ID
+username|string|否|登录后台的用户名
+type|string|是|操作类型，取值有：**login,logout,addrole,editrole,deleterole,adduser,edituser,deleteuser,revoke 撤稿,addplatform,editplatform,deleteplatform**
+content|string|否|具体的操作内容，用户自定义
+
+返回参数：
+
+参数名|类型|说明
+:----:|:----:|:----
+status|int|状态码，200成功，-1失败
+msg|string|具体消息
+
+***
+
+#### API接口操作日志类
+
+**使用方式：**本项目中，在需要使用日志类的地方调用方法：app('apilog')->add($status,$platformid,$platformname,$type,$content)
+
+参数说明：
+
+参数名|类型|是否必需|说明
+:--:|:--:|:--:|:--
+status|int|否|调用接口后的状态，200成功，-1失败，0接口异常,1无接口权限
+platformid|int|是|调用平台的ID
+platformname |string|否|平台名称
+type |string|是|接口调用类型:**oauth认证,putin入库,push推送,pushback推送回调,edit修改,delete删除,getlist获取列表,getcontent获取内容**
+content|string|否|接口返回的内容
+
+返回参数：
+
+参数名|类型|说明
+:--:|:--:|:--
+status|int|状态码，200成功，-1失败
+msg|string|具体消息
